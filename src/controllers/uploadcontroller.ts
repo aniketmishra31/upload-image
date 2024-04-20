@@ -4,22 +4,7 @@ import multer from "multer";
 import { getImages } from "../utils/getImages";
 
 
-const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, `${path.join(__dirname, "uploads")}`)
-    },
-    filename: function (req, file, cb) {
-        const uniqueFilename = Date.now() + '-' + file.originalname;
-        cb(null, uniqueFilename)
-    }
-});
-
-export const upload = multer({
-    storage,
-    fileFilter: function (req, file, cb) {
-        cb(null, true);
-    }
-});
+export const upload = multer({ dest: 'uploads/' })
 
 export const handleUpload = async (req: Request, res: Response) => {
     try {
