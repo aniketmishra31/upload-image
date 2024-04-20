@@ -1,10 +1,9 @@
 import type { Request, Response } from "express";
-import path from "path";
 import multer from "multer";
 import { getImages } from "../utils/getImages";
 
 
-export const upload = multer({ dest: 'uploads/' })
+export const upload = multer();
 
 export const handleUpload = async (req: Request, res: Response) => {
     try {
